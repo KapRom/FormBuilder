@@ -1,3 +1,10 @@
+# How to run the project
+
+You need to have installed stable version of node.js.
+
+> Run npm install to install all needed packages
+> Run npm start to run the project
+
 # Forms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
