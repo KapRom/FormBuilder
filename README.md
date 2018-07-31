@@ -1,6 +1,6 @@
 # How to run the project
 
-You need to have installed stable version of node.js.
+You need to have a stable version of node.js installed.
 
 - Run npm install to install all needed packages
 - Run npm start to run the project
