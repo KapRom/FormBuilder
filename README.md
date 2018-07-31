@@ -2,8 +2,8 @@
 
 You need to have installed stable version of node.js.
 
-> Run npm install to install all needed packages
-> Run npm start to run the project
+- Run npm install to install all needed packages
+- Run npm start to run the project
 
 # Forms
 
