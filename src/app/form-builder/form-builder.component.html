@@ -1,0 +1,119 @@
+
+<mat-card>
+  <mat-card-header>
+
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <form>
+        <mat-list>
+          <mat-list-item *ngIf="answerType" class="field">
+            <div *ngIf="answerType == 'Number'">
+              <mat-form-field>
+                <mat-select placeholder="Condition" [(ngModel)] = "selectedCondition" name="condition" [required]="true">
+                  <mat-option *ngFor="let condition of numberConditions" [value]="condition.displayValue">
+                    {{condition.displayValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Condition is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="nextItem">
+                <input matInput placeholder="Answer" [(ngModel)] = "selectedAnswer" name="answer">
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Answer is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="answerType == 'Text'">
+              <mat-form-field>
+                <mat-select placeholder="Condition" [(ngModel)] = "selectedCondition" name="condition" [required]="true">
+                  <mat-option *ngFor="let condition of otherConditions" [value]="condition.displayValue">
+                    {{condition.displayValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Answer is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="nextItem">
+                <input matInput placeholder="Answer" [(ngModel)] = "selectedAnswer" name="answer">
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Answer is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="answerType == 'Yes/No'">
+              <mat-form-field>
+                <mat-select placeholder="Condition" [(ngModel)] = "selectedCondition" name="condition" [required]="true">
+                  <mat-option *ngFor="let condition of otherConditions" [value]="condition.displayValue">
+                    {{condition.displayValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Answer is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="nextItem">
+                <mat-select placeholder="Answer" [(ngModel)] = "selectedAnswer" name="answer" [required]="true">
+                  <mat-option *ngFor="let answer of answers" [value]="answer.displayValue">
+                    {{answer.displayValue}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Answer is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-list-item>
+
+          <mat-list-item class="field">
+            <mat-form-field>
+              <input matInput placeholder="Question"
+                     [(ngModel)] = "enteredQuestion"
+                     name="question" [required]="true">
+              <mat-error *ngIf="questionFormControl.hasError('required')">
+                Question is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item class="field">
+            <mat-form-field>
+              <mat-select placeholder="Type"  [(ngModel)] = "selectedType" name="type" [required]="true">
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                  {{type.value}}
+                </mat-option>
+                <mat-error *ngIf="questionFormControl.hasError('required')">
+                  Type is <strong>required</strong>
+                </mat-error>
+              </mat-select>
+            </mat-form-field>
+          </mat-list-item>
+
+          <mat-list-item class="field">
+            <button mat-stroked-button
+                    color="accent"
+                    (click)="addSubInput()"
+                    [disabled]="!selectedType || !enteredQuestion">Add sub-input</button>
+            <button class="nextItem" mat-stroked-button
+                    color="accent"
+                    (click)="deleteSubInput()"
+                    [disabled]="!selectedType || !enteredQuestion">Delete sub-input</button>
+          </mat-list-item>
+        </mat-list>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div *ngFor="let input of subInputsTypes" class="shiftRight">
+ <app-form-builder [receivedType]="input.value"></app-form-builder>
+</div>
+

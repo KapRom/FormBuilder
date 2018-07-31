@@ -1,0 +1,23 @@
+<mat-toolbar color="accent">
+
+  <div id="header">
+    <button
+      id="list-button"
+      class="btn btn-info btn-sm">
+      <span
+        id="list-bootstrap-icon"
+        class="glyphicon glyphicon-th-list">
+      </span>
+    </button>
+  </div>
+  <div class="header-style">
+    Forms Generator
+  </div>
+
+</mat-toolbar>
+
+<div class="centerElement">
+      <app-form-builder></app-form-builder>
+
+      <app-form-filler [frames]="frames"></app-form-filler>
+</div>
